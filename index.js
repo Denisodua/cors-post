@@ -22,12 +22,11 @@ app.post('/api/proxy/campaigns', async (req, res) => {
   try {
     const response = await axios.post(
       'https://partner.onlytraffic.com/api/marketer?do=campaigns', 
-      {
-        api_auth_key: '55596-9C427-724C7-0A129'  // ваш ключ API
-      }, 
+      {},  // Пустое тело запроса, если оно не нужно
       {
         headers: {
-          'Content-Type': 'application/json'
+          'Content-Type': 'application/json',
+          'api_auth_key': '55596-9C427-724C7-0A129'  // Ключ API в заголовке
         }
       }
     );
