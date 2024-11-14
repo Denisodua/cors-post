@@ -21,6 +21,7 @@ app.post('/api/proxy/campaigns', async (req, res) => {
       {},
       {
         headers: {
+          'Content-Type': 'application/json',
           'api_auth_key': '55596-9C427-724C7-0A129'
         }
       }
