@@ -1,4 +1,5 @@
 const express = require('express');
+const axios = require('axios');
 const cors = require('cors');
 const path = require('path');
 const app = express();
@@ -14,6 +15,27 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.get('/', (req, res) => {
   console.log('GET запрос к корню сервера');
   res.sendFile(path.join(__dirname, 'public', 'test.html'));
+});
+
+// Прокси-запрос на внешний сервер
+app.post('/api/proxy/campaigns', async (req, res) => {
+  try {
+    const response = await axios.post(
+      'https://partner.onlytraffic.com/api/marketer?do=campaigns', 
+      {
+        api_auth_key: '55596-9C427-724C7-0A129'  // ваш ключ API
+      }, 
+      {
+        headers: {
+          'Content-Type': 'application/json'
+        }
+      }
+    );
+    res.json(response.data);  // Пересылаем ответ от внешнего сервера клиенту
+  } catch (error) {
+    console.error('Ошибка при отправке запроса:', error);
+    res.status(500).json({ error: 'Ошибка при обработке запроса.' });
+  }
 });
 
 // Запуск сервера
