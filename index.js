@@ -1,21 +1,20 @@
 const express = require('express');
 const cors = require('cors');
+const path = require('path');
 const app = express();
 const PORT = process.env.PORT || 10000;
 
 // Включаем CORS
 app.use(cors());
 
-// Добавляем обработчик для корневого маршрута
-app.get('/', (req, res) => {
-  res.send('Сервер работает. Используйте /api/proxy/campaigns для POST-запросов.');
-});
+// Устанавливаем папку для статичных файлов
+app.use(express.static(path.join(__dirname, 'public')));
 
+// Главная страница будет показывать файл test.html
 app.get('/', (req, res) => {
   console.log('GET запрос к корню сервера');
-  res.send('Сервер работает. Используйте /api/proxy/campaigns для POST-запросов.');
+  res.sendFile(path.join(__dirname, 'public', 'test.html'));
 });
-
 
 // Запуск сервера
 app.listen(PORT, () => {
