@@ -11,11 +11,11 @@ app.get('/', (req, res) => {
   res.send('Сервер работает. Используйте /api/proxy/campaigns для POST-запросов.');
 });
 
-// Ваш существующий маршрут для /api/proxy/campaigns
-app.post('/api/proxy/campaigns', (req, res) => {
-  // Обработка вашего POST-запроса
-  res.send('Запрос /api/proxy/campaigns успешно обработан');
+app.get('/', (req, res) => {
+  console.log('GET запрос к корню сервера');
+  res.send('Сервер работает. Используйте /api/proxy/campaigns для POST-запросов.');
 });
+
 
 // Запуск сервера
 app.listen(PORT, () => {
