@@ -1,33 +1,23 @@
 const express = require('express');
-const axios = require('axios');
+const cors = require('cors');
 const app = express();
-
-// Порт сервера обертки
 const PORT = process.env.PORT || 3000;
 
-// Middleware для работы с JSON
-app.use(express.json());
+// Включаем CORS
+app.use(cors());
 
-// POST-обертка для запроса к конечному API
-app.post('/api/proxy/campaigns', async (req, res) => {
-    try {
-        const response = await axios.post(
-            'https://partner.onlytraffic.com/api/marketer?do=campaigns',
-            {}, // Пустое тело, если оно требуется
-            {
-                headers: {
-                    'api_auth_key': '55596-9C427-724C7-0A129'
-                }
-            }
-        );
-
-        res.json(response.data); // Возвращаем ответ от API
-    } catch (error) {
-        console.error('Ошибка при запросе к конечному API:', error.message);
-        res.status(500).json({ message: 'Ошибка при запросе к API' });
-    }
+// Добавляем обработчик для корневого маршрута
+app.get('/', (req, res) => {
+  res.send('Сервер работает. Используйте /api/proxy/campaigns для POST-запросов.');
 });
 
+// Ваш существующий маршрут для /api/proxy/campaigns
+app.post('/api/proxy/campaigns', (req, res) => {
+  // Обработка вашего POST-запроса
+  res.send('Запрос /api/proxy/campaigns успешно обработан');
+});
+
+// Запуск сервера
 app.listen(PORT, () => {
-    console.log(`Сервер запущен на порту ${PORT}`);
+  console.log(`Сервер запущен на порту ${PORT}`);
 });
