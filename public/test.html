@@ -6,26 +6,28 @@
     <title>API Test</title>
 </head>
 <body>
-<button onclick="sendRequest()">Send POST Request</button>
-<pre id="response"></pre>
+  <button onclick="sendRequest()">Send POST Request</button>
+  <pre id="response"></pre>
 
-<script>
+  <script>
     function sendRequest() {
-        fetch('https://partner.onlytraffic.com/api/marketer?do=campaigns', {
-            method: 'POST',
-            headers: {
-                'api_auth_key': '55596-9C427-724C7-0A129'
-            }
+      fetch('https://cors-post.onrender.com/api/proxy/campaigns', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({
+          api_auth_key: '55596-9C427-724C7-0A129'  // ваш ключ API
         })
-            .then(response => response.json())
-            .then(data => {
-                console.log(response);
-                document.getElementById('response').textContent = JSON.stringify(data, null, 2);
-            })
-            .catch(error => {
-                document.getElementById('response').textContent = 'Error: ' + error;
-            });
+      })
+      .then(response => response.json())
+      .then(data => {
+        document.getElementById('response').textContent = JSON.stringify(data, null, 2);
+      })
+      .catch(error => {
+        document.getElementById('response').textContent = 'Error: ' + error;
+      });
     }
-</script>
+  </script>
 </body>
 </html>
