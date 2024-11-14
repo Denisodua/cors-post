@@ -21,18 +21,17 @@ app.post('/api/proxy/campaigns', async (req, res) => {
       {},
       {
         headers: {
-          'Content-Type': 'application/json',
           'api_auth_key': '55596-9C427-724C7-0A129'
         }
       }
     );
     res.json(response.data);
   } catch (error) {
-    console.error('Ошибка при отправке запроса:', error);
-    res.status(500).json({ error: 'Ошибка при обработке запроса.' });
+    console.error('Error query:', error);
+    res.status(500).json({ error: 'Error query build.' });
   }
 });
 
 app.listen(PORT, () => {
-  console.log(`Сервер запущен на порту ${PORT}`);
+  console.log(`Start on port ${PORT}`);
 });
