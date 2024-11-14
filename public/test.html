@@ -14,12 +14,12 @@
         fetch('https://partner.onlytraffic.com/api/marketer?do=campaigns', {
             method: 'POST',
             headers: {
-                'Content-Type': 'application/json',
                 'api_auth_key': '55596-9C427-724C7-0A129'
             }
         })
             .then(response => response.json())
             .then(data => {
+                console.log(response);
                 document.getElementById('response').textContent = JSON.stringify(data, null, 2);
             })
             .catch(error => {
