@@ -10,7 +10,6 @@ app.use(cors());
 app.use(express.static(path.join(__dirname, 'public')));
 
 app.get('/', (req, res) => {
-  console.log('GET запрос к корню сервера');
   res.sendFile(path.join(__dirname, 'public', 'test.html'));
 });
 
