@@ -23,7 +23,8 @@ app.post('/api/proxy/campaigns', async (req, res) => {
         }
       }
     );
-    res.json(response.data);
+    console.log(response)
+    // res.json(response.data);
   } catch (error) {
     console.error('Error query:', error);
     res.status(500).json({ error: 'Error query build.' });
