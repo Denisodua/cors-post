@@ -19,8 +19,7 @@ app.post('/api/proxy/campaigns', async (req, res) => {
       'https://partner.onlytraffic.com/api/marketer?do=campaigns', 
       {
         headers: {
-          'Content-Type': 'application/json',
-          'Authorization': '55596-DB771-EF2E1-7372E'
+
         }
       }
     );
