@@ -16,7 +16,7 @@ app.get('/', (req, res) => {
 app.post('/api/proxy/campaigns', async (req, res) => {
   try {
     const response = await axios.post(
-      'https://partner.onlytraffic.com/api/marketer?do=campaigns&api_auth_key=55596-DB771-EF2E1-7372E', 
+      'https://partner.onlytraffic.com/api/marketer?do=campaigns&api_auth_key=B6C43-745C7-4F231-55596', 
       {
         headers: {
 
