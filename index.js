@@ -15,14 +15,15 @@ app.get('/', (req, res) => {
 
 app.post('/api/proxy/campaigns', async (req, res) => {
   try {
-    const response = await axios.post(
-      'https://partner.onlytraffic.com/api/marketer?do=campaigns', 
-      {
-        headers: {
-          "Authorization": "B6C43-745C7-4F231-55596"
+      const response = await axios.post(
+        'https://partner.onlytraffic.com/api/marketer?do=campaigns',
+        {},
+        {
+          headers: {
+            "Authorization": "B6C43-745C7-4F231-55596"
+          }
         }
-      }
-    );
+      );
     console.log(response);
     res.json(response.data);
   } catch (error) {
